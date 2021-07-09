@@ -1,26 +1,19 @@
-type Approval @entity {
-  id: ID!
-  owner: Bytes! # address
-  approved: Bytes! # address
-  tokenId: BigInt! # uint256
-}
-
-type ApprovalForAll @entity {
-  id: ID!
-  owner: Bytes! # address
-  operator: Bytes! # address
-  approved: Boolean! # bool
-}
-
-type OwnershipTransferred @entity {
-  id: ID!
-  previousOwner: Bytes! # address
-  newOwner: Bytes! # address
-}
-
 type Transfer @entity {
   id: ID!
-  from: Bytes! # address
-  to: Bytes! # address
-  tokenId: BigInt! # uint256
+  from: Bytes!
+  to: Bytes!
+  tokenId: BigInt!
+}
+
+type Token @entity {
+  id: ID!
+  tokenID: BigInt!
+  creator: User!
+  owner: User!
+}
+
+type User @entity {
+  id: ID!
+  address: Bytes! # address
+  tokens: [Token!]! @derivedFrom(field: "owner")
 }
