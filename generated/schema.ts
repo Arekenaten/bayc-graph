@@ -129,10 +129,10 @@ export class Token extends Entity {
 }
 
 export class User extends Entity {
-  constructor(id: string) {
+  constructor(id: string, address: Address) {
     super();
     this.set("id", Value.fromString(id));
-    this.set("address", Value.fromString(id));
+    this.set("address", Value.fromAddress(address));
   }
 
   save(): void {

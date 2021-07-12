@@ -18,7 +18,7 @@ export function handleTransfer(event: TransferEvent): void {
 
   let user = User.load(event.params.to.toHexString());
   if (!user) {
-    user = new User(event.params.to.toHexString());
+    user = new User(event.params.to.toHexString(), event.params.to);
     user.save();
   }
 }
